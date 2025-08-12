@@ -6,7 +6,6 @@ from dash import Dash, html, dcc, callback, Output, Input, dash_table, no_update
 import plotly.express as px
 import json
 import datetime, time
-from flask_caching import Cache
 import plotly.graph_objects as go
 import dash_bootstrap_components as dbc
 
