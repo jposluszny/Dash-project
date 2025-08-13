@@ -25,8 +25,8 @@ layout = html.Div([
     html.H3('Data used for this application'),
 
     # Display a loading spinner and the data table.
-    dcc.Loading(id='loading', type='default', children=[ 
-
+    dcc.Loading(id='loading', type='cube', children=[ 
+            html.Div(id='table-container', style={'min-height':'400px'})
        ]
     ),
 ]),
@@ -41,13 +41,12 @@ def load_data_to_store(value):
     return df.to_dict('records')
 
 @callback(
-    Output('loading', 'children'), 
+    Output('table-container', 'children'), 
     Input('storage', 'data'))
 def create_data_table(data):
     ''' Creates a Dash DataTable to present the data loaded from the storage. '''
 
-    if data:
-        table = dash_table.DataTable(id='table', data=data, page_action='native', page_size=7, 
-        style_table={'overflowX': 'auto'}, style_cell={'textAlign': 'left', 'padding': '10px'})
-        return table
-    return no_update
+    table = dash_table.DataTable(id='table', data=data, page_action='native', page_size=7, 
+    style_table={'overflowX': 'auto'}, style_cell={'textAlign': 'left', 'padding': '10px'})
+    return table
+
