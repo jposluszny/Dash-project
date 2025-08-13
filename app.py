@@ -13,6 +13,8 @@ import dash_bootstrap_components as dbc
 external_stylesheets = [dbc.themes.CERULEAN, 'styles.css']
 app = Dash(__name__, use_pages=True, external_stylesheets=external_stylesheets)
 
+server = app.server
+
 # Create a navigation bar using Bootstrap components
 navbar = dbc.NavbarSimple(
     children=[
