@@ -13,7 +13,13 @@ import dash_bootstrap_components as dbc
 external_stylesheets = [dbc.themes.CERULEAN, 'styles.css']
 app = Dash(__name__, use_pages=True, external_stylesheets=external_stylesheets)
 
+# Variable used for deployment
 server = app.server
+
+path = 'assets/kiva.csv'
+
+# Read the csv file and create data frame
+df = pd.read_csv(path)
 
 # Create a navigation bar using Bootstrap components
 navbar = dbc.NavbarSimple(
@@ -29,15 +35,31 @@ navbar = dbc.NavbarSimple(
 
 # App layout, including the navigation bar and a container for subpages
 app.layout = html.Div(children=[
-    navbar,
-    dbc.Container([
 
-        # This is where the content of the individual pages will be rendered
+    # Create a storage component to store JSON data in the client's browser session.
+    dcc.Store(id='storage', storage_type='session'),
+
+    # Get the current URL
+    dcc.Location(id='url', refresh=False),
+
+    # Add the navbar to the layout
+    navbar,
+
+    # This is where the content of the individual pages will be rendered
+    dbc.Container([
         dbc.Row([
             dash.page_container
         ], className='mt-5'),
     ]),
 ])
+
+@callback(
+    Output('storage', 'data'), 
+    Input('url', 'pathname'))
+def load_data_to_store(value):
+    ''' Stores data in the client's browser session. '''
+
+    return df.to_dict('records')
 
 if __name__ == '__main__':
     app.run(debug=True)

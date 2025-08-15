@@ -12,8 +12,6 @@ import dash_bootstrap_components as dbc
 # Register the page and create url
 dash.register_page(__name__, path='/')
 
-path = 'assets/kiva.csv'
-
 # Create layout
 layout = html.Div([
 
@@ -25,20 +23,11 @@ layout = html.Div([
     html.H3('Data used for this application'),
 
     # Display a loading spinner and the data table.
-    dcc.Loading(id='loading', type='cube', children=[ 
-            html.Div(id='table-container', style={'min-height':'400px'})
+    dcc.Loading(id='loading', className='h-100', type='cube', children=[ 
+            html.Div(id='table-container')
        ]
     ),
-]),
-
-@callback(
-    Output('storage', 'data'), 
-    Input('hidden-div', 'children'))
-def load_data_to_store(value):
-    ''' Loads data from a CSV file and stores it in the client's browser session. '''
-
-    df = pd.read_csv(path)
-    return df.to_dict('records')
+])
 
 @callback(
     Output('table-container', 'children'), 
