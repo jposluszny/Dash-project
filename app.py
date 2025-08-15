@@ -16,7 +16,7 @@ app = Dash(__name__, use_pages=True, external_stylesheets=external_stylesheets)
 # Variable used for deployment
 server = app.server
 
-path = 'assets/kiva.csv'
+path = 'assets/data.csv'
 
 # Read the csv file and create data frame
 df = pd.read_csv(path)
