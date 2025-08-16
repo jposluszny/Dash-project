@@ -1,12 +1,7 @@
-import base64
-import io
 import pandas as pd
 import dash
-from dash import Dash, html, dcc, callback, Output, Input, dash_table, no_update, State
+from dash import Dash, html, dcc, callback, Output, Input, dash_table, no_update
 import plotly.express as px
-import json
-import datetime, time
-import plotly.graph_objects as go
 import dash_bootstrap_components as dbc
 
 # Initialize the app with a Dash Bootstrap theme and external stylesheets
@@ -49,7 +44,7 @@ app.layout = html.Div(children=[
     dbc.Container([
         dbc.Row([
             dash.page_container
-        ], className='mt-5'),
+        ], className='mt-3'),
     ]),
 ])
 

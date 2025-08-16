@@ -1,12 +1,7 @@
-import base64
-import io
 import pandas as pd
 import dash
-from dash import Dash, html, dcc, callback, Output, Input, dash_table, no_update, State
+from dash import Dash, html, dcc, callback, Output, Input, dash_table, no_update
 import plotly.express as px
-import json
-import datetime, time
-import plotly.graph_objects as go
 import dash_bootstrap_components as dbc
 
 # Register the page and create url
