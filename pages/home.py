@@ -13,8 +13,9 @@ layout = html.Div([
     # Create a storage component to store JSON data in the client's browser session.
     dcc.Store(id='storage', storage_type='session'),
 
-    # Hidden div component used to trigger the initial data-loading callback.
-    html.Div(id='hidden-div', style={'display': 'none'}),
+    # # This element (a hidden div) serves as an additional Input for the callback,
+    # dbc.Row(id='hidden-div', className='d-none',  children=[
+    #     ]),
     html.H3('Data used for this application'),
 
     # Display a loading spinner and the data table.

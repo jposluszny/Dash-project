@@ -28,8 +28,8 @@ layout = html.Div([
         ]),
 
             dbc.Row(className='m-4', children=[
-                    dbc.Col(dcc.Graph(id='scatter-plot', figure={}), width=6),
-                    dbc.Col(dcc.Graph(id='pie-chart', figure={}), width=6),
+                dbc.Col(dcc.Graph(id='scatter-plot', figure={}), className='col-md-6'),
+                dbc.Col(dcc.Graph(id='pie-chart', figure={}), className='col-md-6'),
         ]),
        ]
     ),

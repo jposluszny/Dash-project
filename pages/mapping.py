@@ -15,7 +15,7 @@ layout = html.Div([
     dcc.Store(id='storage'),
 
     # This element (a hidden div) serves as an additional Input for the callback,
-    dbc.Row(id='hidden-div', children=[
+    dbc.Row(id='hidden-div', className='d-none',  children=[
         ]),
 
     # dcc.Loading is a component that displays a loading spinner,

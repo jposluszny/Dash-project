@@ -10,7 +10,7 @@ dash.register_page(__name__, path='/tree-map')
 # Create layout
 layout = html.Div([
     dcc.Store(id='storage'),
-    dbc.Row(id='hidden-div', children=[
+    dbc.Row(id='hidden-div', className='d-none', children=[
         ]),
 
     # Display a loading spinner and graphs.
@@ -22,7 +22,6 @@ layout = html.Div([
        ]
     ),
 ]),
-
 
 @callback(
     Output('graphs-container', 'children'),
