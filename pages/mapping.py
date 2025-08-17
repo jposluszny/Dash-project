@@ -14,10 +14,6 @@ layout = html.Div([
     # We use it to pass data between callbacks without reloading.
     dcc.Store(id='storage'),
 
-    # This element (a hidden div) serves as an additional Input for the callback,
-    dbc.Row(id='hidden-div', className='d-none',  children=[
-        ]),
-
     # dcc.Loading is a component that displays a loading spinner,
     dcc.Loading(id='loading', className='h-100', type='cube', children=[ 
 
@@ -33,13 +29,11 @@ layout = html.Div([
 # Callback that generates the graph based on data.
 # Output: 'graph-container', which is the element where the graph will be displayed.
 # Input: 'storage', which is the data from dcc.Store memory.
-# Input: 'hidden-div', used as a trigger.
 @callback(
     Output('graph-container', 'children'),
     Input('storage', 'data'),
-    Input('hidden-div', 'children'),
 )
-def create_graph(data, value):
+def create_graph(data):
 
     # Checking if data has been passed.
     if data:

@@ -10,8 +10,6 @@ dash.register_page(__name__, path='/tree-map')
 # Create layout
 layout = html.Div([
     dcc.Store(id='storage'),
-    dbc.Row(id='hidden-div', className='d-none', children=[
-        ]),
 
     # Display a loading spinner and graphs.
     dcc.Loading(id='loading', className='h-100',type='cube', children=[ 
@@ -26,9 +24,8 @@ layout = html.Div([
 @callback(
     Output('graphs-container', 'children'),
     Input('storage', 'data'),
-    Input('hidden-div', 'children'),
 )
-def create_graphs(data, value):
+def create_graphs(data):
     """
     Creates Sunburst and Treemap charts based on the data.
     The data is loaded from dcc.Store.

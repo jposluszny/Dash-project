@@ -34,7 +34,8 @@ app.layout = html.Div(children=[
     # Create a storage component to store JSON data in the client's browser session.
     dcc.Store(id='storage', storage_type='session'),
 
-    # Get the current URL
+    # Get the current URL, used to trigger callback to load data to client's browser
+    # regardless the url
     dcc.Location(id='url', refresh=False),
 
     # Add the navbar to the layout
