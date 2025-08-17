@@ -58,4 +58,4 @@ def load_data_to_store(value):
     return df.to_dict('records')
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run()
