@@ -72,7 +72,7 @@ def update_scatter_plot(data, value):
         fig = px.scatter(dff, x='funded_amount', y='lender_count', labels={
                      'funded_amount': 'Funded Amount',
                      'lender_count': 'Lender Count'},
-            title=f'Funded Amount vs Lender Count for {value} sector', color='day')
+            title=f'Lender Count vs Funded Amount for {value} sector', color='day')
         return fig
     return no_update
 
